@@ -1,0 +1,24 @@
+spring:
+  mvc:
+    view:
+      suffix: ".html"
+      prefix: "/templates"
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: "${SPRING_DATASOURCE_URL:}"
+    username: "${SPRING_DATASOURCE_USERNAME:}"
+    password: "${SPRING_DATASOURCE_PASSWORD:}"
+server:
+  port: "${PORT:8080}"
+logging:
+  file:
+    path: ./
+---
+spring:
+  profiles: local
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/aiposizi_2"
+    username: "postgres"
+    password: "postgres"
+  jpa:
+    show-sql: "true"
