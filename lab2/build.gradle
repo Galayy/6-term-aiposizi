@@ -29,6 +29,7 @@ dependencies {
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     
     implementation "org.mapstruct:mapstruct-jdk8:${mapstructVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'    
     implementation "io.swagger:swagger-annotations:${swaggerAnnotationsVersion}"
@@ -37,6 +38,10 @@ dependencies {
 
     compile "io.springfox:springfox-bean-validators:$springfoxSwaggerVersion"
     compile "io.springfox:springfox-swagger2:$springfoxSwaggerVersion"
+    compile group: 'org.webjars', name: 'jquery', version: '3.4.1'
+    compile group: 'org.webjars', name: 'bootstrap', version: '4.4.1'
+    compile group: 'org.webjars', name: 'popper.js', version: '2.0.2'
+    compile group: 'org.webjars', name: 'momentjs', version: '2.24.0'
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'

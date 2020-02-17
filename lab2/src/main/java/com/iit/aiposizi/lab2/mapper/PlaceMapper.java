@@ -14,9 +14,8 @@ public interface PlaceMapper {
     PlaceMapper PLACE_MAPPER = getMapper(PlaceMapper.class);
 
     @Mapping(target = "employee", source = "employee")
-    @Mapping(target = "id", expression = "java(place.getId())")
-    @Mapping(target = "number", expression = "java(place.getNumber())")
-    @Mapping(target = "roomId", expression = "java(place.getRoom().getId())")
+    @Mapping(target = "id", source = "place.id")
+    @Mapping(target = "roomId", source = "place.room.id")
     Place toModel(PlaceEntity place, Employee employee);
 
 }

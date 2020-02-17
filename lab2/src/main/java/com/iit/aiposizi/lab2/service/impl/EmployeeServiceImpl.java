@@ -4,7 +4,6 @@ import com.iit.aiposizi.lab2.entity.EmployeeEntity;
 import com.iit.aiposizi.lab2.exception.EntityNotFoundException;
 import com.iit.aiposizi.lab2.exception.InvalidInputDataException;
 import com.iit.aiposizi.lab2.model.Employee;
-import com.iit.aiposizi.lab2.model.requests.EmployeeRequest;
 import com.iit.aiposizi.lab2.repository.EmployeeRepository;
 import com.iit.aiposizi.lab2.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -54,32 +53,30 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
-    public Employee create(EmployeeRequest request) {
-        if (employeeRepository.existsByLastName(request.getLastName())) {
+    public void create(Employee employee) {
+        if (employeeRepository.existsByLastName(employee.getLastName())) {
             throw new InvalidInputDataException(format("Employee with last name %s already exists",
-                    request.getLastName()));
+                    employee.getLastName()));
         }
         var entity = EmployeeEntity.builder()
-                .department(request.getDepartment())
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
+                .department(employee.getDepartment())
+                .firstName(employee.getFirstName())
+                .lastName(employee.getLastName())
                 .build();
-        var savedEntity = employeeRepository.save(entity);
+        employeeRepository.save(entity);
         log.info("New employee successfully saved");
-        return EMPLOYEE_MAPPER.toModel(savedEntity);
     }
 
     @Override
     @Transactional
-    public Employee update(UUID id, EmployeeRequest request) {
+    public void update(UUID id, Employee employee) {
         var entity = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(format("There is no employee with id %s", id)));
-        entity.setDepartment(request.getDepartment());
-        entity.setFirstName(request.getFirstName());
-        entity.setLastName(request.getLastName());
-        var updatedEntity = employeeRepository.save(entity);
+        entity.setDepartment(employee.getDepartment());
+        entity.setFirstName(employee.getFirstName());
+        entity.setLastName(employee.getLastName());
+        employeeRepository.save(entity);
         log.info("Employee with id {} successfully updated", id);
-        return EMPLOYEE_MAPPER.toModel(updatedEntity);
     }
 
     @Override

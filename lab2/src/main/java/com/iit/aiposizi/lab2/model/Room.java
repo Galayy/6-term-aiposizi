@@ -10,5 +10,7 @@ public class Room {
     private UUID id;
     private UUID officeId;
     private Integer number;
+    private Integer totalPlacesNumber;
+    private Integer freePlacesNumber;
 
 }

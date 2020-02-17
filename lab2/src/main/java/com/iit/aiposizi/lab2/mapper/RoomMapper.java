@@ -13,15 +13,14 @@ public interface RoomMapper {
 
     RoomMapper ROOM_MAPPER = getMapper(RoomMapper.class);
 
-    @Mapping(target = "id", expression = "java(entity.getId())")
-    @Mapping(target = "officeId", expression = "java(entity.getOffice().getId())")
-    @Mapping(target = "number", expression = "java(entity.getNumber())")
+    @Mapping(target = "officeId", source = "entity.office.id")
+    @Mapping(target = "totalPlacesNumber", expression = "java(entity.getPlaces().size())")
     Room toModel(RoomEntity entity);
 
     @Mapping(target = "places", ignore = true)
     @Mapping(target = "office", source = "office")
-    @Mapping(target = "id", expression = "java(entity.getId())")
-    @Mapping(target = "number", expression = "java(entity.getNumber())")
-    RoomEntity toEntity(Room entity, OfficeEntity office);
+    @Mapping(target = "id", source = "room.id")
+    @Mapping(target = "number", source = "room.number")
+    RoomEntity toEntity(Room room, OfficeEntity office);
 
 }

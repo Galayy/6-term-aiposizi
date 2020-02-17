@@ -8,6 +8,8 @@ import java.util.UUID;
 public class Office {
 
     private UUID id;
-    private UUID addressId;
+    private Address address;
+    private String companyName;
+    private Integer roomsNumber;
 
 }

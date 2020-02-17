@@ -1008,3 +1008,313 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.ServletException
 2020-02-02 14:11:53.354  INFO 22352 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-02-02 14:11:53.357  INFO 22352 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2020-02-02 14:11:53.372  INFO 22352 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-02-17 14:42:36.172  INFO 14676 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Starting Lab2Application on WSB-168-71 with PID 14676 (C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2\out\production\classes started by Aliaksandra.Halai in C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2)
+2020-02-17 14:42:36.179  INFO 14676 --- [main] com.iit.aiposizi.lab2.Lab2Application    : No active profile set, falling back to default profiles: default
+2020-02-17 14:42:38.302  INFO 14676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-17 14:42:38.411  INFO 14676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101ms. Found 5 JPA repository interfaces.
+2020-02-17 14:42:38.801  INFO 14676 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 14:42:39.112  INFO 14676 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-02-17 14:42:39.122  INFO 14676 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-17 14:42:39.122  INFO 14676 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-17 14:42:39.236  INFO 14676 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-17 14:42:39.236  INFO 14676 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2974 ms
+2020-02-17 14:42:39.308  WARN 14676 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Unsatisfied dependency expressed through method 'flywayInitializer' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flyway' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.flywaydb.core.Flyway]: Factory method 'flyway' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine suitable jdbc url
+2020-02-17 14:42:39.311  INFO 14676 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-02-17 14:42:39.326  INFO 14676 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-02-17 14:42:39.328 ERROR 14676 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine suitable jdbc url
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2020-02-17 14:44:18.499  INFO 6456 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Starting Lab2Application on WSB-168-71 with PID 6456 (C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2\out\production\classes started by Aliaksandra.Halai in C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2)
+2020-02-17 14:44:18.504  INFO 6456 --- [main] com.iit.aiposizi.lab2.Lab2Application    : No active profile set, falling back to default profiles: default
+2020-02-17 14:44:20.028  INFO 6456 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-17 14:44:20.128  INFO 6456 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 91ms. Found 5 JPA repository interfaces.
+2020-02-17 14:44:20.498  INFO 6456 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 14:44:20.796  INFO 6456 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-02-17 14:44:20.806  INFO 6456 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-17 14:44:20.807  INFO 6456 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-17 14:44:20.930  INFO 6456 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-17 14:44:20.931  INFO 6456 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2291 ms
+2020-02-17 14:44:21.012  WARN 6456 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Unsatisfied dependency expressed through method 'flywayInitializer' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flyway' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.flywaydb.core.Flyway]: Factory method 'flyway' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine suitable jdbc url
+2020-02-17 14:44:21.015  INFO 6456 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-02-17 14:44:21.030  INFO 6456 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-02-17 14:44:21.032 ERROR 6456 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine suitable jdbc url
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2020-02-17 14:44:45.810  INFO 17900 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Starting Lab2Application on WSB-168-71 with PID 17900 (C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2\out\production\classes started by Aliaksandra.Halai in C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2)
+2020-02-17 14:44:45.816  INFO 17900 --- [main] com.iit.aiposizi.lab2.Lab2Application    : The following profiles are active: local
+2020-02-17 14:44:47.574  INFO 17900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-17 14:44:47.684  INFO 17900 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 98ms. Found 5 JPA repository interfaces.
+2020-02-17 14:44:48.102  INFO 17900 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 14:44:48.384  INFO 17900 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-02-17 14:44:48.392  INFO 17900 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-17 14:44:48.393  INFO 17900 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-17 14:44:48.494  INFO 17900 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-17 14:44:48.496  INFO 17900 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2572 ms
+2020-02-17 14:44:48.606  INFO 17900 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.0.8 by Redgate
+2020-02-17 14:44:48.615  INFO 17900 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-17 14:44:48.718  INFO 17900 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-17 14:44:48.734  INFO 17900 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/aiposizi_2 (PostgreSQL 11.3)
+2020-02-17 14:44:48.772  INFO 17900 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.022s)
+2020-02-17 14:44:48.789  INFO 17900 --- [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2020-02-17 14:44:48.847  INFO 17900 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2020-02-17 14:44:48.858  INFO 17900 --- [main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version 0 - Init tables
+2020-02-17 14:44:49.008  INFO 17900 --- [main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public" (execution time 00:00.169s)
+2020-02-17 14:44:49.141  INFO 17900 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-17 14:44:49.233  INFO 17900 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.10.Final}
+2020-02-17 14:44:49.393  INFO 17900 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-17 14:44:49.498  INFO 17900 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2020-02-17 14:44:50.455  INFO 17900 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-17 14:44:50.462  INFO 17900 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-17 14:44:51.188  WARN 17900 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-17 14:44:51.340  INFO 17900 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-17 14:44:51.577  INFO 17900 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-17 14:44:51.899  INFO 17900 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-02-17 14:44:51.913  INFO 17900 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-02-17 14:44:51.956  INFO 17900 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-02-17 14:44:52.167  INFO 17900 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-02-17 14:44:52.173  INFO 17900 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Started Lab2Application in 7.31 seconds (JVM running for 9.194)
+2020-02-17 14:44:56.731  INFO 17900 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-17 14:44:56.731  INFO 17900 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-17 14:44:56.741  INFO 17900 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-02-17 14:45:17.570  WARN 17900 --- [http-nio-8080-exec-4] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
+2020-02-17 14:46:04.422  INFO 10400 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Starting Lab2Application on WSB-168-71 with PID 10400 (C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2\out\production\classes started by Aliaksandra.Halai in C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2)
+2020-02-17 14:46:04.425  INFO 10400 --- [main] com.iit.aiposizi.lab2.Lab2Application    : The following profiles are active: local
+2020-02-17 14:46:05.548  INFO 10400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-17 14:46:05.641  INFO 10400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86ms. Found 5 JPA repository interfaces.
+2020-02-17 14:46:05.961  INFO 10400 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 14:46:06.208  INFO 10400 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-02-17 14:46:06.216  INFO 10400 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-17 14:46:06.216  INFO 10400 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-17 14:46:06.310  INFO 10400 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-17 14:46:06.310  INFO 10400 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1822 ms
+2020-02-17 14:46:06.408  INFO 10400 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.0.8 by Redgate
+2020-02-17 14:46:06.413  INFO 10400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-17 14:46:06.515  INFO 10400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-17 14:46:06.528  INFO 10400 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/aiposizi_2 (PostgreSQL 11.3)
+2020-02-17 14:46:06.564  INFO 10400 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.023s)
+2020-02-17 14:46:06.570  INFO 10400 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 0
+2020-02-17 14:46:06.573  INFO 10400 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-02-17 14:46:06.677  INFO 10400 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-17 14:46:06.751  INFO 10400 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.10.Final}
+2020-02-17 14:46:06.917  INFO 10400 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-17 14:46:07.042  INFO 10400 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2020-02-17 14:46:07.820  INFO 10400 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-17 14:46:07.826  INFO 10400 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-17 14:46:08.361  WARN 10400 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-17 14:46:08.468  INFO 10400 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-17 14:46:08.605  INFO 10400 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-17 14:46:08.773  INFO 10400 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-02-17 14:46:08.786  INFO 10400 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-02-17 14:46:08.874  INFO 10400 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-02-17 14:46:09.067  INFO 10400 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-02-17 14:46:09.072  INFO 10400 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Started Lab2Application in 15.447 seconds (JVM running for 16.959)
+2020-02-17 14:46:09.935  INFO 10400 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-17 14:46:09.936  INFO 10400 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-17 14:46:09.942  INFO 10400 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-02-17 14:46:20.484  INFO 10400 --- [http-nio-8080-exec-6] c.i.a.lab2.api.addresses.AddAddress      : Address was successfully created
+2020-02-17 14:46:20.600  INFO 10400 --- [http-nio-8080-exec-7] c.i.a.l.service.impl.AddressServiceImpl  : 1 addresses was found
+2020-02-17 14:46:20.603  INFO 10400 --- [http-nio-8080-exec-7] c.i.a.l.service.impl.AddressServiceImpl  : 1 addresses was found
+2020-02-17 14:46:20.604  INFO 10400 --- [http-nio-8080-exec-7] c.i.a.lab2.api.addresses.AddAddress      : 1 addresses was found
+2020-02-17 14:52:24.495  INFO 10824 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Starting Lab2Application on WSB-168-71 with PID 10824 (C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2\out\production\classes started by Aliaksandra.Halai in C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2)
+2020-02-17 14:52:24.498  INFO 10824 --- [main] com.iit.aiposizi.lab2.Lab2Application    : The following profiles are active: local
+2020-02-17 14:52:36.838  INFO 10824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-17 14:52:36.999  INFO 10824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 146ms. Found 5 JPA repository interfaces.
+2020-02-17 14:52:37.433  INFO 10824 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 14:52:37.669  INFO 10824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-02-17 14:52:37.677  INFO 10824 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-17 14:52:37.678  INFO 10824 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-17 14:52:37.782  INFO 10824 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-17 14:52:37.782  INFO 10824 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3066 ms
+2020-02-17 14:52:37.886  INFO 10824 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.0.8 by Redgate
+2020-02-17 14:52:37.891  INFO 10824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-17 14:52:37.993  INFO 10824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-17 14:52:38.006  INFO 10824 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/aiposizi_2 (PostgreSQL 11.3)
+2020-02-17 14:52:38.032  INFO 10824 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.015s)
+2020-02-17 14:52:38.040  INFO 10824 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 0
+2020-02-17 14:52:38.041  INFO 10824 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-02-17 14:52:38.140  INFO 10824 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-17 14:52:38.225  INFO 10824 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.10.Final}
+2020-02-17 14:52:38.367  INFO 10824 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-17 14:52:38.492  INFO 10824 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2020-02-17 14:52:39.344  INFO 10824 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-17 14:52:39.351  INFO 10824 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-17 14:52:40.049  WARN 10824 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-17 14:52:40.449  INFO 10824 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-17 14:52:41.283  INFO 10824 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-17 14:52:41.509  INFO 10824 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-02-17 14:52:41.522  INFO 10824 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-02-17 14:52:41.556  INFO 10824 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-02-17 14:52:41.695  INFO 10824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-02-17 14:52:41.698  INFO 10824 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Started Lab2Application in 21.202 seconds (JVM running for 24.552)
+2020-02-17 15:21:15.366  INFO 15104 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Starting Lab2Application on WSB-168-71 with PID 15104 (C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2\out\production\classes started by Aliaksandra.Halai in C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2)
+2020-02-17 15:21:15.370  INFO 15104 --- [main] com.iit.aiposizi.lab2.Lab2Application    : The following profiles are active: local
+2020-02-17 15:21:16.667  INFO 15104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-17 15:21:16.761  INFO 15104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87ms. Found 5 JPA repository interfaces.
+2020-02-17 15:21:17.071  INFO 15104 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 15:21:17.317  INFO 15104 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-02-17 15:21:17.326  INFO 15104 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-17 15:21:17.326  INFO 15104 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-17 15:21:17.435  INFO 15104 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-17 15:21:17.437  INFO 15104 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1832 ms
+2020-02-17 15:21:17.550  INFO 15104 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.0.8 by Redgate
+2020-02-17 15:21:17.556  INFO 15104 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-17 15:21:17.646  INFO 15104 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-17 15:21:17.660  INFO 15104 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/aiposizi_2 (PostgreSQL 11.3)
+2020-02-17 15:21:17.690  INFO 15104 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.016s)
+2020-02-17 15:21:17.697  INFO 15104 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 0
+2020-02-17 15:21:17.698  INFO 15104 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-02-17 15:21:17.823  INFO 15104 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-17 15:21:17.913  INFO 15104 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.10.Final}
+2020-02-17 15:21:18.064  INFO 15104 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-17 15:21:18.203  INFO 15104 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2020-02-17 15:21:19.009  INFO 15104 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-17 15:21:19.016  INFO 15104 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-17 15:21:19.588  WARN 15104 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-17 15:21:19.699  INFO 15104 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-17 15:21:20.072  INFO 15104 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-17 15:21:20.974  INFO 15104 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-02-17 15:21:21.005  INFO 15104 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-02-17 15:21:21.077  INFO 15104 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-02-17 15:21:21.233  INFO 15104 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-02-17 15:21:21.237  INFO 15104 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Started Lab2Application in 6.806 seconds (JVM running for 8.797)
+2020-02-17 15:21:58.683  INFO 9740 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Starting Lab2Application on WSB-168-71 with PID 9740 (C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2\out\production\classes started by Aliaksandra.Halai in C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2)
+2020-02-17 15:21:58.689  INFO 9740 --- [main] com.iit.aiposizi.lab2.Lab2Application    : The following profiles are active: local
+2020-02-17 15:22:00.280  INFO 9740 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-17 15:22:00.425  INFO 9740 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 134ms. Found 5 JPA repository interfaces.
+2020-02-17 15:22:00.798  INFO 9740 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 15:22:01.069  INFO 9740 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-02-17 15:22:01.079  INFO 9740 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-17 15:22:01.080  INFO 9740 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-17 15:22:01.200  INFO 9740 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-17 15:22:01.201  INFO 9740 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2427 ms
+2020-02-17 15:22:01.338  INFO 9740 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.0.8 by Redgate
+2020-02-17 15:22:01.347  INFO 9740 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-17 15:22:01.467  INFO 9740 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-17 15:22:01.484  INFO 9740 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/aiposizi_2 (PostgreSQL 11.3)
+2020-02-17 15:22:01.519  INFO 9740 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.018s)
+2020-02-17 15:22:01.527  INFO 9740 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 0
+2020-02-17 15:22:01.529  INFO 9740 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-02-17 15:22:01.688  INFO 9740 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-17 15:22:01.790  INFO 9740 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.10.Final}
+2020-02-17 15:22:02.009  INFO 9740 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-17 15:22:02.138  INFO 9740 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2020-02-17 15:22:03.193  INFO 9740 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-17 15:22:03.207  INFO 9740 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-17 15:22:03.985  WARN 9740 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-17 15:22:04.107  INFO 9740 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-17 15:22:04.309  INFO 9740 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-17 15:22:04.525  INFO 9740 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-02-17 15:22:04.540  INFO 9740 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-02-17 15:22:04.580  INFO 9740 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-02-17 15:22:04.756  INFO 9740 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-02-17 15:22:04.760  INFO 9740 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Started Lab2Application in 7.001 seconds (JVM running for 8.61)
+2020-02-17 15:22:08.823  INFO 9740 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-17 15:22:08.824  INFO 9740 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-17 15:22:08.833  INFO 9740 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2020-02-17 15:22:14.354  INFO 9740 --- [http-nio-8080-exec-6] c.i.a.l.service.impl.AddressServiceImpl  : 1 addresses was found
+2020-02-17 15:23:34.673  INFO 13748 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Starting Lab2Application on WSB-168-71 with PID 13748 (C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2\out\production\classes started by Aliaksandra.Halai in C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2)
+2020-02-17 15:23:34.680  INFO 13748 --- [main] com.iit.aiposizi.lab2.Lab2Application    : The following profiles are active: local
+2020-02-17 15:23:35.914  INFO 13748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-17 15:23:36.006  INFO 13748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84ms. Found 5 JPA repository interfaces.
+2020-02-17 15:23:36.337  INFO 13748 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 15:23:36.590  INFO 13748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-02-17 15:23:36.598  INFO 13748 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-17 15:23:36.599  INFO 13748 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-17 15:23:36.694  INFO 13748 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-17 15:23:36.694  INFO 13748 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1919 ms
+2020-02-17 15:23:36.788  INFO 13748 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.0.8 by Redgate
+2020-02-17 15:23:36.794  INFO 13748 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-17 15:23:36.894  INFO 13748 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-17 15:23:36.907  INFO 13748 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/aiposizi_2 (PostgreSQL 11.3)
+2020-02-17 15:23:36.933  INFO 13748 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.014s)
+2020-02-17 15:23:36.940  INFO 13748 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 0
+2020-02-17 15:23:36.941  INFO 13748 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-02-17 15:23:37.023  INFO 13748 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-17 15:23:37.100  INFO 13748 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.10.Final}
+2020-02-17 15:23:37.254  INFO 13748 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-17 15:23:37.374  INFO 13748 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2020-02-17 15:23:38.071  INFO 13748 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-17 15:23:38.080  INFO 13748 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-17 15:23:38.657  WARN 13748 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-17 15:23:38.764  INFO 13748 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-17 15:23:38.903  INFO 13748 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-17 15:23:39.089  INFO 13748 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-02-17 15:23:39.103  INFO 13748 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-02-17 15:23:39.141  INFO 13748 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-02-17 15:23:39.288  INFO 13748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-02-17 15:23:39.292  INFO 13748 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Started Lab2Application in 5.343 seconds (JVM running for 6.672)
+2020-02-17 15:23:40.331  INFO 13748 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-17 15:23:40.353  INFO 13748 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-17 15:23:40.364  INFO 13748 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-02-17 15:23:40.706  INFO 13748 --- [http-nio-8080-exec-1] c.i.a.l.service.impl.AddressServiceImpl  : 1 addresses was found
+2020-02-17 15:32:31.600  INFO 9244 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Starting Lab2Application on WSB-168-71 with PID 9244 (C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2\out\production\classes started by Aliaksandra.Halai in C:\Users\Aliaksandra.Halai\IdeaProjects\6-term-aiposizi\lab2)
+2020-02-17 15:32:31.604  INFO 9244 --- [main] com.iit.aiposizi.lab2.Lab2Application    : The following profiles are active: local
+2020-02-17 15:32:33.244  INFO 9244 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-17 15:32:33.372  INFO 9244 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 115ms. Found 5 JPA repository interfaces.
+2020-02-17 15:32:33.796  INFO 9244 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 15:32:34.130  INFO 9244 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-02-17 15:32:34.149  INFO 9244 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-17 15:32:34.149  INFO 9244 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-02-17 15:32:34.290  INFO 9244 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-17 15:32:34.291  INFO 9244 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2611 ms
+2020-02-17 15:32:34.455  INFO 9244 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 6.0.8 by Redgate
+2020-02-17 15:32:34.464  INFO 9244 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-17 15:32:34.564  INFO 9244 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-17 15:32:34.586  INFO 9244 --- [main] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:postgresql://localhost:5432/aiposizi_2 (PostgreSQL 11.3)
+2020-02-17 15:32:34.633  INFO 9244 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.024s)
+2020-02-17 15:32:34.644  INFO 9244 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 0
+2020-02-17 15:32:34.646  INFO 9244 --- [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2020-02-17 15:32:34.875  INFO 9244 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-17 15:32:35.054  INFO 9244 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.10.Final}
+2020-02-17 15:32:35.313  INFO 9244 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-17 15:32:35.456  INFO 9244 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2020-02-17 15:32:38.066  INFO 9244 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-17 15:32:38.110  INFO 9244 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-17 15:32:39.283  WARN 9244 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-17 15:32:39.466  INFO 9244 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-17 15:32:39.619  INFO 9244 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-17 15:32:39.989  INFO 9244 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-02-17 15:32:40.008  INFO 9244 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-02-17 15:32:40.068  INFO 9244 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-02-17 15:32:40.365  INFO 9244 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-02-17 15:32:40.370  INFO 9244 --- [main] com.iit.aiposizi.lab2.Lab2Application    : Started Lab2Application in 9.421 seconds (JVM running for 11.508)
+2020-02-17 15:32:45.680  INFO 9244 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-17 15:32:45.681  INFO 9244 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-17 15:32:45.688  INFO 9244 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-02-17 15:32:45.772  INFO 9244 --- [http-nio-8080-exec-1] c.i.a.l.service.impl.AddressServiceImpl  : Address with id efa3868a-c77c-4dd5-b06a-a8b8b6445ba3 successfully found

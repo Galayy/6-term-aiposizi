@@ -13,12 +13,13 @@ public interface OfficeMapper {
 
     OfficeMapper OFFICE_MAPPER = getMapper(OfficeMapper.class);
 
-    @Mapping(target = "addressId", expression = "java(entity.getAddress().getId())")
+    @Mapping(target = "addressId", source = "entity.address.id")
+    @Mapping(target = "roomsNumber", expression = "java(entity.getRooms().size())")
     Office toModel(OfficeEntity entity);
 
     @Mapping(target = "rooms", ignore = true)
     @Mapping(target = "address", source = "address")
-    @Mapping(target = "id", expression = "java(office.getId())")
+    @Mapping(target = "id", source = "office.id")
     OfficeEntity toEntity(Office office, AddressEntity address);
 
 }

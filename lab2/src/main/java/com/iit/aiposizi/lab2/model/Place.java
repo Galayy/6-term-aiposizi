@@ -4,11 +4,11 @@ import lombok.Data;
 
 import java.util.UUID;
 
-@Data
+@Data//TODO: override toString
 public class Place {
 
     private UUID id;
-    private UUID roomId;
+    private Room room;
     private Employee employee;
     private Integer number;
 

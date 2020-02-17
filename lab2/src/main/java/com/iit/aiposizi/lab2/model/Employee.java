@@ -8,8 +8,10 @@ import java.util.UUID;
 public class Employee {
 
     private UUID id;
+    private String companyName;
     private String department;
     private String firstName;
     private String lastName;
+    private Place place;
 
 }

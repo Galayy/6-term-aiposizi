@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>lab 2</title>
+    <link href="/webjars/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container pb-5">
+
+    <form method="post" th:object="${employee}">
+        <div>
+            <label>Сотрудник</label>
+            <div class="container p-2">
+                <label for="countryD">Отдел</label>
+                <input type="text" class="form-control" th:field="*{department}"
+                       th:value="*{department}" id="countryD"/>
+            </div>
+            <div class="container p-2">
+                <label for="cityD">Имя</label>
+                <input type="text" class="form-control" th:field="*{firstName}"
+                       th:value="*{firstName}"
+                       id="cityD"/>
+            </div>
+            <div class="container p-2">
+                <label for="streetD">Фамилия</label>
+                <input type="text" class="form-control" th:field="*{lastName}"
+                       th:value="*{lastName}" id="streetD"/>
+            </div>
+        </div>
+        <button class="btn btn-outline-success p-2" type="submit">Создать</button>
+    </form>
+</div>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/momentjs/2.24.0/moment.js"></script>
+<script src="/webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
