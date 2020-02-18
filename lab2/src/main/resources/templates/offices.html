@@ -36,7 +36,9 @@
                 <a>|</a>
                 <a th:href="@{/offices/{id}/delete(id=${office.id})}">Удалить</a>
                 <a>|</a>
-                <a th:href="@{/rooms/{id}/create(id=${office.id})}">Создать комнату</a>
+                <a th:href="@{/offices/{id}/rooms(id=${office.id})}">Комнаты</a>
+                <a>|</a>
+                <a th:href="@{/offices/{id}/create-room(id=${office.id})}">Добавить комнату</a>
             </td>
         </tr>
         </tbody>

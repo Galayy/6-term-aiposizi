@@ -8,11 +8,11 @@
 <body>
 <div class="container pb-5">
 
-    <form method="post" th:object="${room}">
+    <form method="post" th:object="${place}">
         <div>
-            <label>Комната</label>
+            <label>Место</label>
             <div class="container p-2">
-                <label for="countryD">Номер комнаты</label>
+                <label for="countryD">Номер</label>
                 <input type="text" class="form-control" th:field="*{number}"
                        th:value="*{number}" id="countryD"/>
             </div>

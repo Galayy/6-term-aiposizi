@@ -19,16 +19,17 @@ public class EmployeesController {
 
     private final EmployeeService employeeService;
 
-    @GetMapping("/create")
-    public String createPage(Model model) {
-        model.addAttribute("employee", new Address());
-        return "create-employee";
-    }
-
     @GetMapping("/all")
     public String getAllPage(Model model) {
         model.addAttribute("employees", employeeService.getAll());
         return "employees";
+    }
+
+    @GetMapping("/create")
+    public String createEmployeePage(Model model) {
+        var employee = new Employee();
+        model.addAttribute("employee", employee);
+        return "create-employee";
     }
 
     @GetMapping("/{id}/update")//TODO: front logging
@@ -39,20 +40,20 @@ public class EmployeesController {
     }
 
     @GetMapping("/{id}/delete")
-    public String deleteRoute(@PathVariable UUID id) {
+    public String delete(@PathVariable UUID id) {
         employeeService.delete(id);
         return REDIRECT_ALL_EMPLOYEES_PATH;
     }
 
-    @PostMapping("/add")//TODO: check if not number
-    public String create(@RequestBody Employee employee) {
-        employeeService.create(employee);
+    @PostMapping("/{id}/update")
+    public String update(@PathVariable UUID id, Employee employee) {
+        employeeService.update(id, employee);
         return REDIRECT_ALL_EMPLOYEES_PATH;
     }
 
-    @PostMapping("/{id}/update")
-    public String update(@PathVariable UUID id, @RequestBody Employee employee) {
-        employeeService.update(id, employee);
+    @PostMapping("/create")
+    public String create(Employee employee) {
+        employeeService.create(employee);
         return REDIRECT_ALL_EMPLOYEES_PATH;
     }
 

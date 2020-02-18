@@ -7,7 +7,7 @@ CREATE TABLE employee
         CONSTRAINT employee_pkey PRIMARY KEY,
     first_name TEXT                            NOT NULL,
     last_name  TEXT UNIQUE                     NOT NULL,
-    department TEXT
+    speciality TEXT                            NOT NULL
 );
 
 CREATE TABLE address
@@ -42,11 +42,14 @@ CREATE TABLE place
 (
     id          UUID DEFAULT uuid_generate_v4() NOT NULL
         CONSTRAINT place_pkey PRIMARY KEY,
-    employee_id UUID
+    employee_id UUID UNIQUE
         CONSTRAINT place_employee_id_fkey REFERENCES employee (id),
     room_id     UUID                            NOT NULL
         CONSTRAINT place_room_id_fkey REFERENCES room (id),
     number      INTEGER                         NOT NULL
 );
 
---TODO: add view for free-places
+CREATE VIEW room_view AS
+SELECT room.*,
+       (SELECT count(*) FROM place WHERE room.id = place.room_id AND employee_id IS NULL) AS free_places
+FROM room;

@@ -43,22 +43,20 @@ public class AddressServiceImpl implements AddressService {
     @Override
     @Transactional
     public void update(UUID id, Address address) {
-        var entity = addressRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(format("There is no address with id %s", id)));
-        entity.setCountry(address.getCountry());
-        entity.setCity(address.getCity());
-        entity.setStreet(address.getStreet());
-        entity.setNumber(address.getNumber());
-        addressRepository.save(entity);
-        log.info("Address with id {} successfully updated", id);
+        addressRepository.findById(id).map(entity -> {
+            entity.setCountry(address.getCountry());
+            entity.setCity(address.getCity());
+            entity.setStreet(address.getStreet());
+            entity.setNumber(address.getNumber());
+            addressRepository.save(entity);
+            log.info("Address with id {} successfully updated", id);
+            return entity;
+        }).orElseThrow(() -> new EntityNotFoundException(format("There is no address with id %s", id)));
     }
 
     @Override
     @Transactional
     public void delete(UUID id) {
-        if (!addressRepository.existsById(id)) {
-            throw new EntityNotFoundException(format("Address with id %s is not found", id));
-        }
         addressRepository.deleteById(id);
         log.info("Address with id {} successfully deleted", id);
     }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" lang="en">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>lab 2</title>
 
@@ -38,7 +38,7 @@
                 <a>|</a>
                 <a th:href="@{/addresses/{id}/delete(id=${address.id})}">Удалить</a>
                 <a>|</a>
-                <a th:href="@{/offices/{id}/create(id=${address.id})}">Создать офис</a>
+                <a th:href="@{/addresses/{id}/create-office(id=${address.id})}">Создать офис</a>
             </td>
         </tr>
         </tbody>

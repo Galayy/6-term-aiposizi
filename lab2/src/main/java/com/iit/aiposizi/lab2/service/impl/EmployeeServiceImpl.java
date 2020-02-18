@@ -4,8 +4,10 @@ import com.iit.aiposizi.lab2.entity.EmployeeEntity;
 import com.iit.aiposizi.lab2.exception.EntityNotFoundException;
 import com.iit.aiposizi.lab2.exception.InvalidInputDataException;
 import com.iit.aiposizi.lab2.model.Employee;
+import com.iit.aiposizi.lab2.model.Place;
 import com.iit.aiposizi.lab2.repository.EmployeeRepository;
 import com.iit.aiposizi.lab2.service.EmployeeService;
+import com.iit.aiposizi.lab2.service.PlaceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,13 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import static com.iit.aiposizi.lab2.mapper.EmployeeMapper.EMPLOYEE_MAPPER;
 import static java.lang.String.format;
+import static java.util.stream.Collectors.toList;
 
 @Slf4j
-@Service
+@Service//TODO: setting employees to places
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -30,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> getAll() {
         var employees = employeeRepository.findAll();
         log.info("{} employees was found", employees.size());
-        return employees.stream().map(EMPLOYEE_MAPPER::toModel).collect(Collectors.toList());
+        return employees.stream().map(EMPLOYEE_MAPPER::toModel).collect(toList());
     }
 
     @Override
@@ -59,7 +61,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                     employee.getLastName()));
         }
         var entity = EmployeeEntity.builder()
-                .department(employee.getDepartment())
+                .speciality(employee.getSpeciality())
                 .firstName(employee.getFirstName())
                 .lastName(employee.getLastName())
                 .build();
@@ -72,7 +74,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void update(UUID id, Employee employee) {
         var entity = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(format("There is no employee with id %s", id)));
-        entity.setDepartment(employee.getDepartment());
+        entity.setSpeciality(employee.getSpeciality());
         entity.setFirstName(employee.getFirstName());
         entity.setLastName(employee.getLastName());
         employeeRepository.save(entity);
