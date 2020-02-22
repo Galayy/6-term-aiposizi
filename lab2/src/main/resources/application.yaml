@@ -1,8 +1,4 @@
 spring:
-  mvc:
-    view:
-      suffix: ".html"
-      prefix: "/templates"
   datasource:
     driver-class-name: org.postgresql.Driver
     url: "${SPRING_DATASOURCE_URL:}"

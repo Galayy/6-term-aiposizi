@@ -14,14 +14,14 @@ import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
-@RequestMapping("/offices")
+@RequestMapping("/api/v1/offices")
 public class OfficesApi {
 
     private final OfficeService officeService;
 
-    @GetMapping
+    @GetMapping//TODO: office model returns officeId + address
     public ResponseEntity<List<Office>> getOffices() {
         var offices = officeService.getAll();
         return new ResponseEntity<>(offices, OK);

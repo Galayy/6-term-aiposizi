@@ -13,9 +13,9 @@ import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.*;
 
-@RestController//TODO: check employees for uniqueness
+@Controller//TODO: check employees for uniqueness
 @RequiredArgsConstructor
-@RequestMapping("/places")
+@RequestMapping("/api/v1/places")
 public class PlacesApi {
 
     private final PlaceService placeService;

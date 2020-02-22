@@ -14,9 +14,9 @@ import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
-@RequestMapping("/rooms")
+@RequestMapping("/api/v1/rooms")
 public class RoomsApi {
 
     private final RoomService roomService;

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>lab 2</title>
+    <link href="/webjars/bootstrap-daterangepicker/3.0.5/daterangepicker.css" rel="stylesheet"/>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="d-flex justify-content-center mt-5">
+        <a href="/addresses/add" class="btn-outline-secondary btn m-2">Адреса</a>
+    </div>
+</div>
+<div class="container pb-5">
+
+    <form method="post" th:object="${request}">
+        <div>
+            <div>
+                <div class="container p-2">
+                    <label>Выберите транспорт</label>
+                    <select class="form-control" th:field="*{transport.id}">
+                        <option th:each="transport : ${transportList}"
+                                th:text="${transport.name} + ${transport.type.description} + ${transport.capacity}"
+                                th:value="${transport.id}">Тип
+                        </option>
+                    </select>
+                </div>
+                <div class="row m-5">
+                    <div class="col-6">
+                        <label>Место посадки</label>
+                        <div class="container p-2">
+                            <label for="countryD">Страна</label>
+                            <input type="text" class="form-control" th:field="*{departureAddress.country}"
+                                   th:value="*{departureAddress.country}" id="countryD"/>
+                        </div>
+                        <div class="container p-2">
+                            <label for="cityD">Город</label>
+                            <input type="text" class="form-control" th:field="*{departureAddress.city}" th:value="*{departureAddress.city}"
+                                   id="cityD"/>
+                        </div>
+                        <div class="container p-2">
+                            <label for="streetD">Улица</label>
+                            <input type="text" class="form-control" th:field="*{departureAddress.street}"
+                                   th:value="*{departureAddress.street}" id="streetD"/>
+                        </div>
+                        <div class="container p-2">
+                            <label for="numberD">Здание</label>
+                            <input type="text" class="form-control" th:field="*{departureAddress.number}"
+                                   th:value="*{departureAddress.number}" id="numberD"/>
+                        </div>
+                        <div class="container p-2">
+                            <label for="dateD">Дата/Время Посадки</label>
+
+                            <input type="text" class="form-control" name="departureDT" id="dateD" th:name="departureDT" th:value="*{departureDateTime}"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label>Место высадки</label>
+                        <div class="container p-2">
+                            <label for="countryA">Страна</label>
+                            <input type="text" class="form-control" th:field="*{arrivalAddress.country}" th:value="*{arrivalAddress.country}"
+                                   id="countryA"/>
+                        </div>
+                        <div class="container p-2">
+                            <label for="cityA">Город</label>
+                            <input type="text" class="form-control" th:field="*{arrivalAddress.city}" th:value="*{arrivalAddress.city}"
+                                   id="cityA"/>
+                        </div>
+                        <div class="container p-2">
+                            <label for="streetA">Улица</label>
+                            <input type="text" class="form-control" th:field="*{arrivalAddress.street}" th:value="*{arrivalAddress.street}"
+                                   id="streetA"/>
+                        </div>
+                        <div class="container p-2">
+                            <label for="numberA">Здание</label>
+                            <input type="text" class="form-control" th:field="*{arrivalAddress.number}" th:value="*{arrivalAddress.number}"
+                                   id="numberA"/>
+                        </div>
+                        <div class="container p-2">
+                            <label for="dateA">Дата/Время</label>
+
+                            <input type="text" class="form-control" name="arrivalDT" id="dateA" th:name="arrivalDT" th:value="*{arrivalDateTime}"/>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button class="btn btn-outline-success p-2" type="submit">Сохранить</button>
+    </form>
+</div>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/momentjs/2.24.0/moment.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/webjars/bootstrap-daterangepicker/3.0.5/daterangepicker.js"></script>
+<script>
+    $(function () {
+        $('input[name="departureDT"]').daterangepicker({
+            singleDatePicker: true,
+            timePicker: true,
+            timePicker24Hour: true,
+            drops: "up",
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
+            locale: {
+                format: 'YYYY/MM/DD hh:mm'
+            }
+        });
+    });
+</script>
+<script>
+    $(function () {
+        $('input[name="arrivalDT"]').daterangepicker({
+            singleDatePicker: true,
+            timePicker: true,
+            timePicker24Hour: true,
+            drops: "up",
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
+            locale: {
+                format: 'YYYY/MM/DD hh:mm'
+            }
+        });
+    });
+</script>
+</body>
+</html>
