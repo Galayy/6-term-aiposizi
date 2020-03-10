@@ -9,9 +9,12 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 ext {
+    bootstrapVersion = '4.4.1'
+    jqueryVersion = '3.4.1'
     mapstructVersion = "1.3.1.Final"
+    momentjsVersion = '2.24.0'
+    popperjsVersion = '2.0.2'
     springfoxSwaggerVersion = "2.9.2"
-    swaggerAnnotationsVersion = "1.5.21"
 }
 
 configurations {
@@ -32,19 +35,17 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'    
-    implementation "io.swagger:swagger-annotations:${swaggerAnnotationsVersion}"
     implementation 'org.flywaydb:flyway-core'
     implementation "org.yaml:snakeyaml"
 
-    compile "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.4.1"
-    compile "io.springfox:springfox-bean-validators:$springfoxSwaggerVersion"
-    compile "io.springfox:springfox-swagger2:$springfoxSwaggerVersion"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.webjars:jquery:$jqueryVersion"
+    compile "org.webjars:bootstrap:$bootstrapVersion"
+    compile "org.webjars:popper.js:$popperjsVersion"
+    compile "org.webjars:momentjs:$momentjsVersion"
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
-    runtimeOnly("io.springfox:springfox-swagger-ui:${springfoxSwaggerVersion}") {
-        exclude module: "springfox-spring-web"
-    }
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

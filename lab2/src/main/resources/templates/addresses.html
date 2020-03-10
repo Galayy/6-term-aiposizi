@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>lab 2</title>
+
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/momentjs/2.24.0/moment.js"></script>
+    <link href="/webjars/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="d-flex justify-content-center mt-5">
+        <a href="/addresses/create" class="btn btn-outline-secondary m-2">Добавить адрес</a>
+        <a href="/" class="btn-outline-secondary btn m-2">Назад</a>
+    </div>
+</div>
+<div class="container">
+    <table class="table pt-5">
+        <thead>
+        <tr>
+            <th scope="col">Страна</th>
+            <th scope="col">Город</th>
+            <th scope="col">Улица</th>
+            <th scope="col">Номер дома</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="address : ${addresses}">
+            <td th:text="${address.country}">country</td>
+            <td th:text="${address.city}">city</td>
+            <td th:text="${address.street}">street</td>
+            <td th:text="${address.number}">number</td>
+
+            <td>
+                <a th:href="@{/addresses/{id}/update(id=${address.id})}">Изменить</a>
+                <a>|</a>
+                <a th:href="@{/addresses/{id}/delete(id=${address.id})}">Удалить</a>
+                <a>|</a>
+                <a th:href="@{/addresses/{id}/create-office(id=${address.id})}">Создать офис</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,7 +1,6 @@
 package com.iit.aiposizi.lab2.service;
 
 import com.iit.aiposizi.lab2.model.Employee;
-import com.iit.aiposizi.lab2.model.requests.EmployeeRequest;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,9 +13,9 @@ public interface EmployeeService {
 
     Employee getByLastName(String employeeLastName);
 
-    Employee create(EmployeeRequest request);
+    void create(Employee employee);
 
-    Employee update(UUID id, EmployeeRequest request);
+    void update(UUID id, Employee employee);
 
     void delete(UUID id);
 

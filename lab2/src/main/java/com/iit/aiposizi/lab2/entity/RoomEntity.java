@@ -19,6 +19,7 @@ import static javax.persistence.GenerationType.AUTO;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "room")
+@SecondaryTable(name = "room_view")
 public class RoomEntity {
 
     @Id
@@ -32,6 +33,9 @@ public class RoomEntity {
 
     @Column(name = "number", nullable = false)
     private Integer number;
+
+    @Column(name = "free_places", table = "room_view", insertable = false, updatable = false)
+    private Long freePlaces;
 
     @OneToMany(fetch = LAZY, mappedBy = "room", cascade = ALL)
     private List<PlaceEntity> places;

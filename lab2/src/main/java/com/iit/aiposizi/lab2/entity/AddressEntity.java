@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.UUID;
 
-import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.AUTO;
 
 @Data
@@ -35,8 +34,5 @@ public class AddressEntity {
 
     @Column(name = "number", nullable = false)
     private Integer number;
-
-    @OneToOne(fetch = LAZY, mappedBy = "address")
-    private OfficeEntity office;
 
 }

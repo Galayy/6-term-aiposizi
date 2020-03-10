@@ -24,8 +24,8 @@ public class EmployeeEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
-    @Column(name = "department")
-    private String department;
+    @Column(name = "speciality")
+    private String speciality;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;

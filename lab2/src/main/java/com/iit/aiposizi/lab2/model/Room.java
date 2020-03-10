@@ -8,7 +8,9 @@ import java.util.UUID;
 public class Room {
 
     private UUID id;
-    private UUID officeId;
+    private Office office;
     private Integer number;
+    private Integer totalPlaces;
+    private Long freePlaces;
 
 }

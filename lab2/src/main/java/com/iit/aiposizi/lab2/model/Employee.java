@@ -8,8 +8,13 @@ import java.util.UUID;
 public class Employee {
 
     private UUID id;
-    private String department;
+    private String speciality;
     private String firstName;
     private String lastName;
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + ", " + speciality;
+    }
 
 }

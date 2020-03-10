@@ -2,6 +2,7 @@ package com.iit.aiposizi.lab2.mapper;
 
 import com.iit.aiposizi.lab2.entity.EmployeeEntity;
 import com.iit.aiposizi.lab2.model.Employee;
+import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

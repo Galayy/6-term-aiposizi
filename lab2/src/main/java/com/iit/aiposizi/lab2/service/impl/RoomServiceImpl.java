@@ -1,15 +1,10 @@
 package com.iit.aiposizi.lab2.service.impl;
 
-import com.iit.aiposizi.lab2.entity.PlaceEntity;
 import com.iit.aiposizi.lab2.entity.RoomEntity;
 import com.iit.aiposizi.lab2.exception.EntityNotFoundException;
 import com.iit.aiposizi.lab2.exception.InvalidInputDataException;
-import com.iit.aiposizi.lab2.model.Employee;
 import com.iit.aiposizi.lab2.model.Room;
-import com.iit.aiposizi.lab2.model.requests.RoomRequest;
 import com.iit.aiposizi.lab2.repository.RoomRepository;
-import com.iit.aiposizi.lab2.service.AddressService;
-import com.iit.aiposizi.lab2.service.OfficeService;
 import com.iit.aiposizi.lab2.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +15,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static com.iit.aiposizi.lab2.mapper.AddressMapper.ADDRESS_MAPPER;
-import static com.iit.aiposizi.lab2.mapper.EmployeeMapper.EMPLOYEE_MAPPER;
 import static com.iit.aiposizi.lab2.mapper.OfficeMapper.OFFICE_MAPPER;
 import static com.iit.aiposizi.lab2.mapper.RoomMapper.ROOM_MAPPER;
 import static java.lang.String.format;
@@ -33,9 +26,6 @@ public class RoomServiceImpl implements RoomService {
 
     private final RoomRepository roomRepository;
 
-    private final AddressService addressService;
-    private final OfficeService officeService;
-
     @Override
     @Transactional(readOnly = true)
     public List<Room> getAll() {
@@ -46,11 +36,10 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Employee> getEmployeesById(UUID id) {
-        var room = roomRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(format("There is no room with id %s", id)));
-        return room.getPlaces().stream().map(PlaceEntity::getEmployee).map(EMPLOYEE_MAPPER::toModel)
-                .collect(Collectors.toList());
+    public List<Room> getAllByOfficeId(UUID id) {
+        var rooms = roomRepository.findAllByOfficeId(id);
+        log.info("{} rooms was found", rooms.size());
+        return rooms.stream().map(ROOM_MAPPER::toModel).collect(Collectors.toList());
     }
 
     @Override
@@ -64,16 +53,14 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     @Transactional
-    public Room create(RoomRequest request) {
-        if (roomRepository.existsByOffice_IdAndNumber(request.getOfficeId(), request.getNumber())) {
+    public Room create(Room room) {
+        if (roomRepository.existsByOfficeIdAndNumber(room.getOffice().getId(), room.getNumber())) {
             throw new InvalidInputDataException("Such room already exists");
         }
-        var office = officeService.getById(request.getOfficeId());
-        var address = addressService.getById(office.getAddressId());
 
         var entity = RoomEntity.builder()
-                .number(request.getNumber())
-                .office(OFFICE_MAPPER.toEntity(office, ADDRESS_MAPPER.toEntity(address)))
+                .office(OFFICE_MAPPER.toEntity(room.getOffice()))
+                .number(room.getNumber())
                 .build();
         var savedEntity = roomRepository.save(entity);
         log.info("New room successfully saved");

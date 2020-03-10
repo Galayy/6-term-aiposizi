@@ -1,10 +1,7 @@
 package com.iit.aiposizi.lab2.service.impl;
 
-import com.iit.aiposizi.lab2.entity.AddressEntity;
 import com.iit.aiposizi.lab2.exception.EntityNotFoundException;
-import com.iit.aiposizi.lab2.exception.InvalidInputDataException;
 import com.iit.aiposizi.lab2.model.Address;
-import com.iit.aiposizi.lab2.model.requests.AddressRequest;
 import com.iit.aiposizi.lab2.repository.AddressRepository;
 import com.iit.aiposizi.lab2.service.AddressService;
 import lombok.RequiredArgsConstructor;
@@ -45,44 +42,30 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     @Transactional
-    public Address create(AddressRequest request) {
-        if (addressRepository.existsByCountryAndCityAndStreetAndNumber(request.getCountry(), request.getCity(),
-                request.getStreet(), request.getNumber())) {
-            throw new InvalidInputDataException(format("Address %s already exists", request.toString()));
-        }
-        var entity = AddressEntity.builder()
-                .country(request.getCountry())
-                .city(request.getCity())
-                .street(request.getStreet())
-                .number(request.getNumber())
-                .build();
-        var savedEntity = addressRepository.save(entity);
-        log.info("New address successfully saved");
-        return ADDRESS_MAPPER.toModel(savedEntity);
-    }
-
-    @Override
-    @Transactional
-    public Address update(UUID id, AddressRequest request) {
-        var entity = addressRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(format("There is no address with id %s", id)));
-        entity.setCountry(request.getCountry());
-        entity.setCity(request.getCity());
-        entity.setStreet(request.getStreet());
-        entity.setNumber(request.getNumber());
-        var updatedEntity = addressRepository.save(entity);
-        log.info("Address with id {} successfully updated", id);
-        return ADDRESS_MAPPER.toModel(updatedEntity);
+    public void update(UUID id, Address address) {
+        addressRepository.findById(id).map(entity -> {
+            entity.setCountry(address.getCountry());
+            entity.setCity(address.getCity());
+            entity.setStreet(address.getStreet());
+            entity.setNumber(address.getNumber());
+            addressRepository.save(entity);
+            log.info("Address with id {} successfully updated", id);
+            return entity;
+        }).orElseThrow(() -> new EntityNotFoundException(format("There is no address with id %s", id)));
     }
 
     @Override
     @Transactional
     public void delete(UUID id) {
-        if (!addressRepository.existsById(id)) {
-            throw new EntityNotFoundException(format("Address with id %s is not found", id));
-        }
         addressRepository.deleteById(id);
         log.info("Address with id {} successfully deleted", id);
+    }
+
+    @Override
+    @Transactional
+    public void create(Address address) {
+        addressRepository.save(ADDRESS_MAPPER.toEntity(address));
+        log.info("New address successfully saved");
     }
 
 }
