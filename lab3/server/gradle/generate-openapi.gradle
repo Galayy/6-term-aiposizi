@@ -1,0 +1,21 @@
+openApiGenerate {    
+    generatorName = "spring"
+    inputSpec = "$rootDir/src/main/resources/openapi/server.yml"
+    outputDir = project.rootDir.path
+    configOptions = [
+            interfaceOnly          : "true",
+            apiPackage             : "com.iit.aiposizi.generated.api",
+            modelPackage           : "com.iit.aiposizi.generated.model"
+    ]
+}
+
+tasks {
+    clean {
+        doFirst {
+            delete("$rootDir/src/main/java/com.iit.aiposizi.generated.api")
+            delete("$rootDir/src/main/java/com.iit.aiposizi.generated.model")
+        }
+    }
+    compileJava.dependsOn('clean')
+    compileJava.dependsOn('openApiGenerate')
+}

@@ -1,0 +1,612 @@
+openapi: 3.0.0
+info:
+  version: "1.0"
+  title: Api Documentation
+servers:
+  - url: /api/v1
+
+paths:
+
+  # ========================================
+  # ===== Addresses Api
+  # ========================================
+
+  /addresses/all:
+    get:
+      tags:
+        - addresses
+      operationId: getAllAddresses
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Address"
+        500:
+          description: Internal Server Error
+      deprecated: false
+
+  /addresses:
+    post:
+      tags:
+        - addresses
+      operationId: createAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddressRequest"
+        description: address
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Address"
+        400:
+          description: Bad request
+      deprecated: false
+
+  /addresses/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags:
+        - addresses
+      operationId: getAddressById
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Address"
+        400:
+          description: Bad Request
+        404:
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - addresses
+      operationId: deleteAddress
+      responses:
+        204:
+          description: No Content
+        400:
+          description: Bad Request
+      deprecated: false
+    put:
+      tags:
+        - addresses
+      operationId: updateAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Address"
+        201:
+          description: Created
+        400:
+          description: Bad Request
+        404:
+          description: Not Found
+      deprecated: false
+
+  # ========================================
+  # ===== Employees Api
+  # ========================================
+
+  /employees:
+    post:
+      tags:
+        - employees
+      operationId: createEmployee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmployeeRequest"
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+        422:
+          description: Unprocessable entity
+      deprecated: false
+
+  /employees/all:
+    get:
+      tags:
+        - employees
+      operationId: getAllEmployees
+      parameters:
+        - $ref: '#/components/parameters/Offices'
+        - $ref: '#/components/parameters/Rooms'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Employee"
+      deprecated: false
+
+  /employees/{id}:
+    delete:
+      tags:
+        - employees
+      operationId: deleteEmployee
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        204:
+          description: No Content
+        400:
+          description: Bad request
+      deprecated: false
+    put:
+      tags:
+        - employees
+      operationId: updateEmployee
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+        400:
+          description: Bad request
+        404:
+          description: Not Found
+      deprecated: false
+
+  /employees/{id}/place:
+    put:
+      tags:
+        - employees
+      operationId: placeEmployee
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PlaceEmployeeRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+        400:
+          description: Bad request
+        404:
+          description: Not Found
+      deprecated: false
+
+  # ========================================
+  # ===== Offices Api
+  # ========================================
+
+  /offices/all:
+    get:
+      tags:
+        - offices
+      operationId: getAllOffices
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Office"
+      deprecated: false
+
+  /offices/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags:
+        - offices
+      operationId: getOfficeById
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Office"
+        400:
+          description: Bad request
+        404:
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - offices
+      operationId: deleteOffice
+      responses:
+        204:
+          description: No content
+      deprecated: false
+
+  /offices:
+    post:
+      tags:
+        - offices
+      operationId: createOffice
+      parameters:
+        - name: addressId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: companyName
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Office"
+        400:
+          description: Bad request
+        404:
+          description: Not Found
+      deprecated: false
+
+  # ========================================
+  # ===== Places Api
+  # ========================================
+
+  /places/all:
+    get:
+      tags:
+        - places
+      operationId: getAllPlaces
+      parameters:
+        - $ref: '#/components/parameters/Offices'
+        - $ref: '#/components/parameters/Rooms'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Place"
+        400:
+          description: Bad request
+      deprecated: false
+
+  /places/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags:
+        - places
+      operationId: getPlaceById
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Place"
+        400:
+          description: Bad request
+        404:
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - places
+      operationId: deletePlace
+      responses:
+        204:
+          description: No Content
+        400:
+          description: Bad request
+      deprecated: false
+
+  /places:
+    post:
+      tags:
+        - places
+      operationId: createPlace
+      parameters:
+        - name: roomId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/Number'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Place"
+        404:
+          description: Not Found
+      deprecated: false
+
+  # ========================================
+  # ===== Rooms Api
+  # ========================================
+
+  /rooms/all:
+    get:
+      tags:
+        - rooms
+      operationId: getAllRooms
+      parameters:
+        - $ref: '#/components/parameters/Offices'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Room"
+        400:
+          description: Bad request
+      deprecated: false
+
+  /rooms/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags:
+        - rooms
+      operationId: getRoomById
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Room"
+        400:
+          description: Bad request
+        404:
+          description: Not Found
+      deprecated: false
+    delete:
+      tags:
+        - rooms
+      operationId: deleteRoomById
+      responses:
+        204:
+          description: No Content
+        400:
+          description: Bad request
+      deprecated: false
+
+  /rooms:
+    post:
+      tags:
+        - rooms
+      operationId: createRoom
+      parameters:
+        - name: officeId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/Number'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Room"
+        400:
+          description: Bad request
+        404:
+          description: Not Found
+      deprecated: false
+
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        country:
+          type: string
+        city:
+          type: string
+        street:
+          type: string
+        number:
+          type: integer
+          format: int32
+
+    AddressRequest:
+      type: object
+      properties:
+        country:
+          type: string
+        city:
+          type: string
+        street:
+          type: string
+        number:
+          type: integer
+          format: int32
+
+    Employee:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        firstName:
+          type: string
+        lastName:
+          type: string
+        speciality:
+          type: string
+
+    EmployeeRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        speciality:
+          type: string
+
+    Office:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        address:
+          type: string
+        companyName:
+          type: string
+        roomsNumber:
+          type: integer
+          format: int32
+
+    Place:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        employee:
+          $ref: "#/components/schemas/Employee"
+        number:
+          type: integer
+          format: int32
+        room:
+          $ref: "#/components/schemas/Room"
+
+    PlaceEmployeeRequest:
+      type: object
+      properties:
+        companyName:
+          type: string
+        placeNumber:
+          type: integer
+          format: int32
+        roomNumber:
+          type: integer
+          format: int32
+
+    Room:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        totalPlaces:
+          type: integer
+          format: int32
+        freePlaces:
+          type: integer
+          format: int64
+        number:
+          type: integer
+          format: int32
+        office:
+          $ref: "#/components/schemas/Office"
+
+  # ========================================
+  # ===== Parameters
+  # ========================================
+
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+    CompanyName:
+      name: companyName
+      in: query
+      required: true
+      schema:
+        type: string
+
+    Offices:
+      name: offices
+      in: query
+      required: false
+      explode: true
+      schema:
+        default: []
+        type: array
+        items:
+          type: string
+
+    Number:
+      name: number
+      in: query
+      required: true
+      schema:
+        type: integer
+        format: int32
+
+    Rooms:
+      name: rooms
+      in: query
+      required: false
+      explode: true
+      schema:
+        default: []
+        type: array
+        items:
+          type: integer
+          format: int32
