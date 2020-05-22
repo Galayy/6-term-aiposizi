@@ -6,9 +6,9 @@ import * as Constants from '../Constants';
 class EmployeeEdit extends Component {
 
     emptyItem = {
-        firstName: null,
-        lastName: null,
-        speciality: null
+        firstName: '',
+        lastName: '',
+        speciality: ''
     };
 
     constructor(props) {

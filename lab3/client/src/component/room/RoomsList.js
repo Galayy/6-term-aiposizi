@@ -20,13 +20,13 @@ class RoomsList extends Component {
 
     componentDidMount() {
         const query = this.props.location.search;
-        this.setState({isLoading: true, officeId: query.substr(query.indexOf('=') + 1, )});
+        this.setState({isLoading: true, officeId: query.substr(query.lastIndexOf('=') + 1, )});
 
         fetch(Constants.allRoomsPath + this.props.location.search)
             .then(this.checkStatus)
             .then(response => response.json())
             .then(data => this.setState({rooms: data, isLoading: false,
-                officeId: query.substr(query.indexOf('=') + 1, )}));
+                officeId: query.substr(query.lastIndexOf('=') + 1, )}));
     }
 
     async remove(id) {

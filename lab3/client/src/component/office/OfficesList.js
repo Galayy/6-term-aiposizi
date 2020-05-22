@@ -58,7 +58,8 @@ class OfficesList extends Component {
                     <ButtonGroup>
                         <Button size="sm" color="danger" onClick={() => this.remove(office.id)}>Delete</Button>
                         <Button size="sm" color="primary" tag={Link}
-                                to={Constants.roomsByOfficesPath + office.companyName}>Rooms</Button>
+                                to={Constants.roomsByOfficesPath + office.companyName + '&officeId=' + office.id}>
+                            Rooms</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -68,7 +69,7 @@ class OfficesList extends Component {
             <div>
                 <Container fluid>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to={Constants.allAddressesPath}>Back</Button>
+                        <Button color="success" tag={Link} to={Constants.allOfficesPath}>Back</Button>
                     </div>
                     <h3>Offices</h3>
                     <Table className="mt-4">

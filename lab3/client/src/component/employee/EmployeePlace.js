@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import Select from "react-dropdown-select";
 import {Button, Container, Form, FormGroup, Input, Label} from 'reactstrap';
 import * as Constants from '../Constants';
 
 class EmployeePlace extends Component {
 
     emptyItem = {
-        companyName: null,
-        roomNumber: null,
-        placeNumber: null
+        companyName: '',
+        roomNumber: '',
+        placeNumber: ''
     };
 
     constructor(props) {
         super(props);
         this.state = {
-            item: this.emptyItem, errorMessage: ''
+            item: this.emptyItem, errorMessage: '', places: [], rooms: [], offices: []
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,6 +30,29 @@ class EmployeePlace extends Component {
         this.setState({item});
     }
 
+    componentDidMount() {
+        this.setState({isLoading: true});
+
+        fetch(Constants.allPlacesPath)
+            .then(this.checkStatus)
+            .then(response => response.json())
+            .then(data => this.setState({places: data}));
+
+        fetch(Constants.allRoomsPath)
+            .then(this.checkStatus)
+            .then(response => response.json())
+            .then(data => this.setState({rooms: data}));
+
+        fetch(Constants.allOfficesPath)
+            .then(this.checkStatus)
+            .then(response => response.json())
+            .then(data => this.setState({offices: data}));
+    }
+
+    componentWillUnmount() {
+        this.isLoading = false;
+    }
+
     checkStatus = response => {
         if (response.status === 400) {
             this.setState({
@@ -36,8 +60,6 @@ class EmployeePlace extends Component {
             });
         } else if (response.status >= 500) {
             this.setState({errorMessage: 'Internal server error.'});
-        } else {
-            this.props.history.push(Constants.allEmployeesPath);
         }
         return response;
     }
@@ -51,10 +73,22 @@ class EmployeePlace extends Component {
             headers: Constants.jsonRequestHeaders,
             body: JSON.stringify(item),
         }).then(this.checkStatus);
+        this.props.history.push(Constants.allEmployeesPath);
     }
 
     render() {
-        const {item} = this.state;
+        const {item, places, rooms, offices} = this.state;
+
+        const companyNames = offices.map(office => {
+            return {value: office.companyName, label: office.companyName};
+        });
+        const roomNumbers = Array.from(new Set(rooms.map(room => room.number))).map(number => {
+            return {value: number, label: number}
+        });
+        const placeNumbers = Array.from(new Set(places.map(place => place.number))).map(number => {
+            return {value: number, label: number}
+        });
+
         const title = <h2>Place Employee</h2>;
         return <div>
             <Container>
@@ -62,18 +96,21 @@ class EmployeePlace extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label for="companyName">Company name</Label>
-                        <Input type="text" name="companyName" id="companyName" value={item.companyName}
-                               onChange={this.handleChange} autoComplete="companyName"/>
+                        <Select onInput={this.handleChange} className="custom-select" value={item.companyName}
+                                id="companyName" options={companyNames}>
+                        </Select>
                     </FormGroup>
                     <FormGroup>
                         <Label for="roomNumber">Room number</Label>
-                        <Input type="number" name="roomNumber" id="roomNumber" value={item.roomNumber}
-                               onChange={this.handleChange} autoComplete="roomNumber"/>
+                        <Select onInput={this.handleChange} className="custom-select" value={item.roomNumber}
+                                id="roomNumber" options={roomNumbers}>
+                        </Select>
                     </FormGroup>
                     <FormGroup>
                         <Label for="placeNumber">Place number</Label>
-                        <Input type="number" name="placeNumber" id="placeNumber" value={item.placeNumber}
-                               onChange={this.handleChange} autoComplete="placeNumber"/>
+                        <Select onInput={this.handleChange} className="custom-select" value={item.placeNumber}
+                                id="placeNumber" options={placeNumbers}>
+                        </Select>
                     </FormGroup>
                     {this.state.errorMessage &&
                     <Label style={Constants.errorLabelStyle}> {this.state.errorMessage} </Label>}

@@ -49,7 +49,7 @@ class App extends Component { //TODO: check what buttons (cancel, back, home) we
                 </Switch>
             </Router>
         )
-    } //TODO: autofill with company name|room number, etc. where possible
+    }
 }//TODO: handle if parameters are null|empty
 
 export default App; //TODO: add readme and refactor public folder + think about style
