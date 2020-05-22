@@ -8,6 +8,76 @@ servers:
 paths:
 
   # ========================================
+  # ===== Auth Api
+  # ========================================
+
+  /auth/signup:
+    post:
+      tags:
+        - auth
+      operationId: signup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignupRequest"
+        required: true
+      responses:
+        201:
+          description: Created
+        400:
+          description: BadRequest
+        401:
+          description: Unauthorized
+
+
+  /auth/login:
+    post:
+      tags:
+        - auth
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Token"
+        400:
+          description: BadRequest
+        401:
+          description: Unauthorized
+
+  /auth/refresh:
+    post:
+      tags:
+        - auth
+      operationId: refresh
+      parameters:
+        - in: query
+          name: refreshToken
+          schema:
+            type: string
+          required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Token"
+        400:
+          description: BadRequest
+        401:
+          description: Unauthorized
+
+  # ========================================
   # ===== Addresses Api
   # ========================================
 
@@ -50,6 +120,10 @@ paths:
                 $ref: "#/components/schemas/Address"
         400:
           description: Bad request
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
   /addresses/{id}:
@@ -70,6 +144,10 @@ paths:
           description: Bad Request
         404:
           description: Not Found
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
     delete:
       tags:
@@ -80,6 +158,10 @@ paths:
           description: No Content
         400:
           description: Bad Request
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
     put:
       tags:
@@ -104,6 +186,10 @@ paths:
           description: Bad Request
         404:
           description: Not Found
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
   # ========================================
@@ -130,6 +216,10 @@ paths:
                 $ref: "#/components/schemas/Employee"
         422:
           description: Unprocessable entity
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
   /employees/all:
@@ -169,6 +259,10 @@ paths:
           description: Bad request
         404:
           description: Not Found
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
     delete:
       tags:
@@ -179,6 +273,10 @@ paths:
           description: No Content
         400:
           description: Bad request
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
     put:
       tags:
@@ -201,6 +299,10 @@ paths:
           description: Bad request
         404:
           description: Not Found
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
   /employees/{id}/place:
@@ -223,6 +325,10 @@ paths:
           description: Bad request
         404:
           description: Not Found
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
   # ========================================
@@ -263,6 +369,10 @@ paths:
           description: Bad request
         404:
           description: Not Found
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
     delete:
       tags:
@@ -271,6 +381,10 @@ paths:
       responses:
         204:
           description: No content
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
   /offices:
@@ -301,6 +415,10 @@ paths:
           description: Bad request
         404:
           description: Not Found
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
   # ========================================
@@ -326,6 +444,10 @@ paths:
                   $ref: "#/components/schemas/Place"
         400:
           description: Bad request
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
   /places/{id}:
@@ -346,6 +468,10 @@ paths:
           description: Bad request
         404:
           description: Not Found
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
     delete:
       tags:
@@ -356,6 +482,10 @@ paths:
           description: No Content
         400:
           description: Bad request
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
   /places:
@@ -380,6 +510,10 @@ paths:
                 $ref: "#/components/schemas/Place"
         404:
           description: Not Found
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
   # ========================================
@@ -424,6 +558,10 @@ paths:
           description: Bad request
         404:
           description: Not Found
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
     delete:
       tags:
@@ -434,6 +572,10 @@ paths:
           description: No Content
         400:
           description: Bad request
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
   /rooms:
@@ -460,6 +602,10 @@ paths:
           description: Bad request
         404:
           description: Not Found
+        401:
+          description: Unauthorized
+      security:
+        - JWT: []
       deprecated: false
 
 components:
@@ -516,6 +662,14 @@ components:
         speciality:
           type: string
 
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+
     Office:
       type: object
       properties:
@@ -556,6 +710,16 @@ components:
           type: integer
           format: int32
 
+    SignupRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        role:
+          $ref: "#/components/schemas/AdminRole"
+
     Room:
       type: object
       properties:
@@ -573,6 +737,39 @@ components:
           format: int32
         office:
           $ref: "#/components/schemas/Office"
+
+    Token:
+      type: object
+      properties:
+        issuedAt:
+          type: integer
+          format: int64
+        accessToken:
+          type: string
+        accessExpiresIn:
+          type: integer
+          format: int64
+        refreshToken:
+          type: string
+        refreshExpiresIn:
+          type: integer
+          format: int64
+
+    AdminRole:
+      type: string
+      enum:
+        - "ADMIN"
+        - "ROOT_ADMIN"
+
+  # ========================================
+  # ===== Security
+  # ========================================
+
+  securitySchemes:
+    JWT:
+      type: apiKey
+      name: Authorization
+      in: header
 
   # ========================================
   # ===== Parameters

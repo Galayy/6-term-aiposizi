@@ -2,6 +2,7 @@ package com.iit.aiposizi.service.impl;
 
 import com.iit.aiposizi.entity.EmployeeEntity;
 import com.iit.aiposizi.exception.EntityNotFoundException;
+import com.iit.aiposizi.exception.ForbiddenAccessException;
 import com.iit.aiposizi.exception.InvalidInputDataException;
 import com.iit.aiposizi.generated.model.Employee;
 import com.iit.aiposizi.generated.model.EmployeeRequest;
@@ -19,8 +20,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+import static com.iit.aiposizi.entity.enums.AdminRoleEntity.ADMIN;
 import static com.iit.aiposizi.mapper.EmployeeMapper.EMPLOYEE_MAPPER;
 import static com.iit.aiposizi.util.DatabaseUtils.prepareArray;
+import static com.iit.aiposizi.util.SecurityUtils.getCurrentUser;
 import static java.lang.String.format;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
@@ -88,6 +91,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional
     public void place(final UUID id, final PlaceEmployeeRequest request) {
+        if (getCurrentUser() == null || getCurrentUser().getRole().equals(ADMIN)) {
+            throw new ForbiddenAccessException("Access only for root admins");
+        }
         var employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(format("There is no employee with id %s", id)));
         placeService.place(employee, request);

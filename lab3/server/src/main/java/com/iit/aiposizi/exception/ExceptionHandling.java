@@ -26,4 +26,28 @@ public class ExceptionHandling extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(e, ex, new HttpHeaders(), e.getStatus(), request);
     }
 
+    @ExceptionHandler(IncorrectJwtAuthenticationException.class)
+    protected ResponseEntity<Object> handleIncorrectDataException(final IncorrectJwtAuthenticationException e,
+                                                                  final WebRequest request) {
+        var ex = new UnexpectedError();
+        ex.setMessage(e.getMessage());
+        return handleExceptionInternal(e, ex, new HttpHeaders(), e.getStatus(), request);
+    }
+
+    @ExceptionHandler(EntityAlreadyProcessedException.class)
+    protected ResponseEntity<Object> handleIncorrectDataException(final EntityAlreadyProcessedException e,
+                                                                  final WebRequest request) {
+        var ex = new UnexpectedError();
+        ex.setMessage(e.getMessage());
+        return handleExceptionInternal(e, ex, new HttpHeaders(), e.getStatus(), request);
+    }
+
+    @ExceptionHandler(ForbiddenAccessException.class)
+    protected ResponseEntity<Object> handleIncorrectDataException(final ForbiddenAccessException e,
+                                                                  final WebRequest request) {
+        var ex = new UnexpectedError();
+        ex.setMessage(e.getMessage());
+        return handleExceptionInternal(e, ex, new HttpHeaders(), e.getStatus(), request);
+    }
+
 }
