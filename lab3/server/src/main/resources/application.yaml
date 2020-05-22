@@ -11,6 +11,11 @@ server:
 logging:
   file:
     path: ./
+
+app:
+  jwt:
+    secret:
+      key: "2Cd4Z22IEd8AfDN0bRFtDAeldaw9kH1854XMiTbkd57M0b99clYPcGp7KWDjjE7N8Wu2cItmAjyExEyjtVyBtA=="
 ---
 spring:
   profiles: local
@@ -20,8 +25,3 @@ spring:
     password: "postgres"
   jpa:
     show-sql: "true"
-
-app:
-  jwt:
-    secret:
-      key: "2Cd4Z22IEd8AfDN0bRFtDAeldaw9kH1854XMiTbkd57M0b99clYPcGp7KWDjjE7N8Wu2cItmAjyExEyjtVyBtA=="
