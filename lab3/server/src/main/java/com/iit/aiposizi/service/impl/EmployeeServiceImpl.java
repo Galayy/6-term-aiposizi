@@ -96,7 +96,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private void makeEmptyIfNot(final UUID id) {
         var employee = employeeRepository.findById(id).orElse(new EmployeeEntity());
         if (employee.getPlace() != null) {
-            placeService.removeEmployee(id);
+            placeService.removeEmployee(employee.getPlace().getId());
         }
     }
 

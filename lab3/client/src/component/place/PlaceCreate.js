@@ -3,10 +3,10 @@ import {Link, withRouter} from 'react-router-dom';
 import {Button, Container, Form, FormGroup, Input, Label} from 'reactstrap';
 import * as Constants from '../Constants';
 
-class RoomCreate extends Component {
+class PlaceCreate extends Component {
 
     emptyItem = {
-        officeId: null,
+        roomId: null,
         number: null,
         errorMessage: null
     };
@@ -33,15 +33,15 @@ class RoomCreate extends Component {
         if (response.status === 400) {
             this.setState({
                 item: {
-                    errorMessage: 'There is already a room with this number in this office :)'
+                    errorMessage: 'There is already a place with this number in this room :)'
                 }
             });
         } else if (response.status === 404) {
-            this.setState({item: {errorMessage: 'Office isn\'t found.'}});
+            this.setState({item: {errorMessage: 'Room isn\'t found.'}});
         } else if (response.status >= 500) {
             this.setState({item: {errorMessage: 'Internal server error.'}});
         } else {
-            this.props.history.push(Constants.allRoomsPath);
+            this.props.history.push(Constants.allPlacesPath);
         }
         return response;
     }
@@ -49,9 +49,9 @@ class RoomCreate extends Component {
     async handleSubmit(event) {
         event.preventDefault();
         const {item} = this.state;
-        const office = item.officeId === null ? this.props.location.search.replace('?', '&')
-            : '&officeId=' + item.officeId;
-        await fetch(Constants.baseRoomsPath + '?number=' + item.number + office,
+        const room = item.roomId === null ? this.props.location.search.replace('?', '&')
+            : '&roomId=' + item.roomId;
+        await fetch(Constants.basePlacesPath + '?number=' + item.number + room,
             {
                 method: Constants.postMethod,
                 headers: Constants.jsonRequestHeaders
@@ -60,7 +60,7 @@ class RoomCreate extends Component {
 
     render() {
         const {item} = this.state;
-        const title = <h2>Create Room</h2>;
+        const title = <h2>Create Place</h2>;
 
         return <div>
             <Container>
@@ -75,7 +75,7 @@ class RoomCreate extends Component {
                     <Label style={Constants.errorLabelStyle}> {this.state.item.errorMessage} </Label>}
                     <FormGroup>
                         <Button color="primary" type="submit">Save</Button>{' '}
-                        <Button color="secondary" tag={Link} to={Constants.allOfficesPath}>Cancel</Button>
+                        <Button color="secondary" tag={Link} to={Constants.allRoomsPath}>Cancel</Button>
                         <Button color="secondary" tag={Link} to={'/'}>Home</Button>
                     </FormGroup>
                 </Form>
@@ -85,4 +85,4 @@ class RoomCreate extends Component {
 
 }
 
-export default withRouter(RoomCreate);
+export default withRouter(PlaceCreate);

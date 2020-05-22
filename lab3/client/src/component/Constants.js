@@ -23,25 +23,23 @@ export const roomsByOfficesPath = allRoomsPath + '?offices=';
 
 //Places
 export const basePlacesPath = basePath + '/places';
-export const placesByRoomsPath = basePlacesPath + '?rooms=';
+export const createPlacesPath = basePlacesPath + '?roomId=';
+export const allPlacesPath = basePlacesPath + '/all';
+export const placesByRoomsPath = allPlacesPath + '?offices=';
 
 //Employees
-export const employeesPath = basePath + '/employees';
+export const baseEmployeesPath = basePath + '/employees';
+export const allEmployeesPath = baseEmployeesPath + '/all';
 
 //Methods
 export const putMethod = 'PUT';
 export const postMethod = 'POST';
 export const deleteMethod = 'DELETE';
-export const getMethod = 'GET';
 
 //Headers
 export const jsonRequestHeaders = {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
-};
-export const textRequestHeaders = {
-    'Accept': 'text/html',
-    'Content-Type': 'text/html'
 };
 
 export const errorLabelStyle = {color: 'red'};

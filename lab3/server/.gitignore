@@ -1,7 +1,8 @@
 HELP.md
 .gradle
 build/
-spring.log
+spring.log**
+pom.xml
 .openapi-generator/
 /src/main/java/com.iit.aiposizi.generated.**
 !gradle/wrapper/gradle-wrapper.jar

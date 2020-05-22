@@ -11,7 +11,7 @@ class Home extends Component {
                 <Container fluid>
                     <Button color="link"><Link to={Constants.allAddressesPath}>Addresses</Link></Button>
                     <Button color="link"><Link to={Constants.allOfficesPath}>Offices</Link></Button>
-                    <Button color="link"><Link to={Constants.allRoomsPath}>Rooms</Link></Button>
+                    <Button color="link"><Link to={Constants.allEmployeesPath}>Employees</Link></Button>
                 </Container>
             </div>
         );

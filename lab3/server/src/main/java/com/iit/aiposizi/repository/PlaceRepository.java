@@ -15,9 +15,9 @@ public interface PlaceRepository extends JpaRepository<PlaceEntity, UUID> {
 
     @Query(value = "SELECT *"
             + "FROM place"
-            + "         INNER JOIN office ON (:offices = '{}' OR office.id = ANY (CAST(:offices AS UUID[])))"
+            + "         INNER JOIN office ON (:offices = '{}' OR office.company_name = ANY (CAST(:offices AS TEXT[])))"
             + "         INNER JOIN room ON office.id = room.office_id"
-            + "    AND (:rooms = '{}' OR room.id = ANY (CAST(:rooms AS UUID[])))"
+            + "    AND (:rooms = '{}' OR room.number = ANY (CAST(:rooms AS INTEGER[])))"
             + "WHERE room_id = room.id",
             nativeQuery = true)
     List<PlaceEntity> findAll(@Param("offices") String offices, @Param("rooms") String rooms);

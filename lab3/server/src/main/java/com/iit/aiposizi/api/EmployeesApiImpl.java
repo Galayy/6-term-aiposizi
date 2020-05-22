@@ -3,6 +3,7 @@ package com.iit.aiposizi.api;
 import com.iit.aiposizi.generated.api.EmployeesApi;
 import com.iit.aiposizi.generated.model.Employee;
 import com.iit.aiposizi.generated.model.EmployeeRequest;
+import com.iit.aiposizi.generated.model.Office;
 import com.iit.aiposizi.generated.model.PlaceEmployeeRequest;
 import com.iit.aiposizi.service.EmployeeService;
 import io.swagger.annotations.Api;
@@ -30,6 +31,12 @@ public class EmployeesApiImpl implements EmployeesApi {
                                                           List<Integer> rooms) {
         var employees = employeeService.getAll(offices, rooms);
         return new ResponseEntity<>(employees, OK);
+    }
+
+    @Override
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable final UUID id) {
+        var employee = employeeService.getById(id);
+        return new ResponseEntity<>(employee, OK);
     }
 
     @Override

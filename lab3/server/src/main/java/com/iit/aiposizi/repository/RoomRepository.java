@@ -15,7 +15,7 @@ public interface RoomRepository extends JpaRepository<RoomEntity, UUID> {
 
     @Query(value = "SELECT *"
             + "FROM room_view"
-            + "         INNER JOIN office ON (:offices = '{}' OR office.id = ANY (CAST(:offices AS UUID[])))"
+            + "         INNER JOIN office ON (:offices = '{}' OR office.company_name = ANY (CAST(:offices AS TEXT[])))"
             + "WHERE office_id = office.id",
             nativeQuery = true)
     List<RoomEntity> findAll(@Param("offices") String offices);

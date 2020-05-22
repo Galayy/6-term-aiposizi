@@ -22,13 +22,11 @@ class RoomsList extends Component {
         const query = this.props.location.search;
         this.setState({isLoading: true, officeId: query.substr(query.indexOf('=') + 1, )});
 
-        console.log(this.props);
-        console.log(query.substr(query.indexOf('=') + 1, ));
         fetch(Constants.allRoomsPath + this.props.location.search)
             .then(this.checkStatus)
             .then(response => response.json())
-            .then(data => this.setState({rooms: data, isLoading: false, officeId: query.substr(query.indexOf('=') + 1, )}));
-        console.log(this.state.officeId);
+            .then(data => this.setState({rooms: data, isLoading: false,
+                officeId: query.substr(query.indexOf('=') + 1, )}));
     }
 
     async remove(id) {
@@ -42,7 +40,7 @@ class RoomsList extends Component {
         });
     }
 
-    render() { //TODO: get all with params
+    render() {
         const {rooms, isLoading, errorMessage, officeId} = this.state;
 
         if (errorMessage) {
@@ -61,7 +59,8 @@ class RoomsList extends Component {
                     <ButtonGroup>
                         <Button size="sm" color="danger" onClick={() => this.remove(room.id)}>Delete</Button>
                         <Button size="sm" color="primary" tag={Link}
-                                to={Constants.placesByRoomsPath + room.id}>Places</Button>
+                                to={Constants.placesByRoomsPath + room.office.companyName + '&rooms=' + room.number
+                                + '&roomId=' + room.id}>Places</Button>
                     </ButtonGroup>
                 </td>
             </tr>

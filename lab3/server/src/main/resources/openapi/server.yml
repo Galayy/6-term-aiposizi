@@ -152,12 +152,28 @@ paths:
       deprecated: false
 
   /employees/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags:
+        - employees
+      operationId: getEmployeeById
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+        400:
+          description: Bad request
+        404:
+          description: Not Found
+      deprecated: false
     delete:
       tags:
         - employees
       operationId: deleteEmployee
-      parameters:
-        - $ref: '#/components/parameters/Id'
       responses:
         204:
           description: No Content
@@ -168,8 +184,6 @@ paths:
       tags:
         - employees
       operationId: updateEmployee
-      parameters:
-        - $ref: '#/components/parameters/Id'
       requestBody:
         content:
           application/json:

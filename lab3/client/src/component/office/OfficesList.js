@@ -58,7 +58,7 @@ class OfficesList extends Component {
                     <ButtonGroup>
                         <Button size="sm" color="danger" onClick={() => this.remove(office.id)}>Delete</Button>
                         <Button size="sm" color="primary" tag={Link}
-                                to={Constants.roomsByOfficesPath + office.id}>Rooms</Button>
+                                to={Constants.roomsByOfficesPath + office.companyName}>Rooms</Button>
                     </ButtonGroup>
                 </td>
             </tr>
