@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+ext {
+    lombokVersion = "1.18.4"
+    slf4jVersion = "1.7.30"
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+    implementation "org.slf4j:slf4j-api:$slf4jVersion"
+    implementation "org.slf4j:slf4j-simple:$slf4jVersion"
+
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
